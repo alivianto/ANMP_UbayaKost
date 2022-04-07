@@ -41,13 +41,6 @@ class DashboardFragment : Fragment() {
         recyclerView.adapter = kostListAdapter
 
         observeViewModel()
-        refreshLayoutDashboard.setOnRefreshListener {
-            recyclerView.visibility = View.GONE
-            textViewErrorDashboard.visibility = View.GONE
-            progressLoadDashboard.visibility = View.VISIBLE
-            viewModel.refresh()
-            refreshLayout.isRefreshing = false
-        }
         buttonViewMore.setOnClickListener {
             val action = DashboardFragmentDirections.actionItemHomeToKostList()
             Navigation.findNavController(it).navigate(action)
