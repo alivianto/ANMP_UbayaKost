@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.ubaya.a160419046_ubayakost.GlobalData
 import com.ubaya.a160419046_ubayakost.R
+import com.ubaya.a160419046_ubayakost.databinding.FragmentKostListDetailBinding
 import com.ubaya.a160419046_ubayakost.util.loadImage
 import com.ubaya.a160419046_ubayakost.viewModel.KostDetailViewModel
 import com.ubaya.a160419046_ubayakost.viewModel.UserDetailViewModel
@@ -21,17 +22,21 @@ import kotlinx.android.synthetic.main.fragment_user_detail.*
  * Use the [KostListDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class KostListDetailFragment : Fragment() {
+class KostListDetailFragment : Fragment(), KostSeeDetailClickListener {
     private lateinit var viewModel: KostDetailViewModel
+    private lateinit var dataBinding: FragmentKostListDetailBinding
+    var kostid = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kost_list_detail, container, false)
+        dataBinding = FragmentKostListDetailBinding.inflate(inflater, container, false)
+        //return inflater.inflate(R.layout.fragment_kost_list_detail, container, false)
+        return dataBinding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var kostid = ""
+
         arguments?.let {
             kostid = KostListDetailFragmentArgs.fromBundle(requireArguments()).kostid
         }
@@ -39,18 +44,18 @@ class KostListDetailFragment : Fragment() {
         viewModel.fetch(kostid)
 
         observeViewModel()
-        buttonFasilitas.setOnClickListener {
-            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToFacilityFragment(kostid)
-            Navigation.findNavController(it).navigate(action)
-        }
-        buttonComment.setOnClickListener {
-            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToCommentFragment(kostid)
-            Navigation.findNavController(it).navigate(action)
-        }
-        buttonRating.setOnClickListener {
-            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToRatingFragment(kostid)
-            Navigation.findNavController(it).navigate(action)
-        }
+//        buttonFasilitas.setOnClickListener {
+//            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToFacilityFragment(kostid)
+//            Navigation.findNavController(it).navigate(action)
+//        }
+//        buttonComment.setOnClickListener {
+//            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToCommentFragment(kostid)
+//            Navigation.findNavController(it).navigate(action)
+//        }
+//        buttonRating.setOnClickListener {
+//            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToRatingFragment(kostid)
+//            Navigation.findNavController(it).navigate(action)
+//        }
         var status = false
         imageButtonBookmark.setOnClickListener {
             Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
@@ -61,15 +66,33 @@ class KostListDetailFragment : Fragment() {
             }
             status = !status
         }
+
+        dataBinding.kostListener = this
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
-            textViewNameOfKost.text = it.nama_kos
-            textViewJenisKost.text = it.jenis
-            textViewHarga.text = it.harga_per_bulan
-            textViewNoTelepon.text = it.no_telepon
-            imageViewKostDetail.loadImage(it.photo_url,progressBarPhotoDetail)
+            dataBinding.kost = it
+//            textViewNameOfKost.text = it.nama_kos
+//            textViewJenisKost.text = it.jenis
+//            textViewHarga.text = it.harga_per_bulan
+//            textViewNoTelepon.text = it.no_telepon
+//            imageViewKostDetail.loadImage(it.photo_url,progressBarPhotoDetail)
         }
+    }
+
+    override fun onKostSeeFasilitasClick(view: View) {
+        val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToFacilityFragment(kostid)
+        Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onKostSeeRatingClick(view: View) {
+        val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToRatingFragment(kostid)
+        Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onKostSeeCommentClick(view: View) {
+        val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToCommentFragment(kostid)
+        Navigation.findNavController(view).navigate(action)
     }
 
 }

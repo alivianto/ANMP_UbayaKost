@@ -95,8 +95,8 @@
     <fragment
         android:id="@+id/kostList"
         android:name="com.ubaya.a160419046_ubayakost.view.KostListFragment"
-        android:label="fragment_kost_list"
-        tools:layout="@layout/fragment_kost_list" >
+        android:label="All Kost List"
+        tools:layout="@layout/fragment_kost_list">
         <action
             android:id="@+id/action_kostList_to_itemHome"
             app:destination="@id/itemHome" />
