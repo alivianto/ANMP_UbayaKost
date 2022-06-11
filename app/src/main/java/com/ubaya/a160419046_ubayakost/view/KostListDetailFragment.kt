@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.ubaya.a160419046_ubayakost.GlobalData
@@ -49,6 +50,16 @@ class KostListDetailFragment : Fragment() {
         buttonRating.setOnClickListener {
             val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToRatingFragment(kostid)
             Navigation.findNavController(it).navigate(action)
+        }
+        var status = false
+        imageButtonBookmark.setOnClickListener {
+            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
+            if(status){
+                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24)
+            } else {
+                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24)
+            }
+            status = !status
         }
     }
     private fun observeViewModel() {

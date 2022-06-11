@@ -35,8 +35,8 @@
     <fragment
         android:id="@+id/kostListDetailFragment"
         android:name="com.ubaya.a160419046_ubayakost.view.KostListDetailFragment"
-        android:label="fragment_kost_list_detail"
-        tools:layout="@layout/fragment_kost_list_detail" >
+        android:label="Kost Detail"
+        tools:layout="@layout/fragment_kost_list_detail">
         <action
             android:id="@+id/action_kostListDetailFragment_to_ratingFragment"
             app:destination="@id/ratingFragment" />
@@ -70,7 +70,7 @@
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.ubaya.a160419046_ubayakost.view.UserDetailFragment"
-        android:label="fragment_user_detail"
+        android:label="Profile"
         tools:layout="@layout/fragment_user_detail" />
     <fragment
         android:id="@+id/itemUser"
@@ -80,14 +80,17 @@
     <fragment
         android:id="@+id/itemHome"
         android:name="com.ubaya.a160419046_ubayakost.view.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_itemHome_to_kostListDetailFragment"
             app:destination="@id/kostListDetailFragment" />
         <action
             android:id="@+id/action_itemHome_to_kostList"
             app:destination="@id/kostList" />
+        <action
+            android:id="@+id/action_itemHome_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/kostList"
@@ -100,5 +103,22 @@
         <action
             android:id="@+id/action_kostList_to_kostListDetailFragment"
             app:destination="@id/kostListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemBookmark"
+        android:name="com.ubaya.a160419046_ubayakost.view.BookmarkFragment"
+        android:label="Bookmark"
+        tools:layout="@layout/fragment_bookmark" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ubaya.a160419046_ubayakost.view.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_kostList"
+            app:destination="@id/kostList" />
+        <action
+            android:id="@+id/action_searchFragment_to_itemHome"
+            app:destination="@id/itemHome" />
     </fragment>
 </navigation>

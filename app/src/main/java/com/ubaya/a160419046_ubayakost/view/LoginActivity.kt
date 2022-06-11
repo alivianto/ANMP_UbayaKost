@@ -20,9 +20,10 @@ class LoginActivity : AppCompatActivity() {
     private var queue: RequestQueue?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getSupportActionBar()?.hide()
         setContentView(R.layout.activity_login)
         buttonLogin.setOnClickListener {
-            val username = username_login.text.toString()
+            val username = inputSearch.text.toString()
             val pass = password_login.text.toString()
             queue = Volley.newRequestQueue(getApplication())
             val url = "https://cleonard712.github.io/kostJson/user.json"

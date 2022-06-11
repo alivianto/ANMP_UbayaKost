@@ -13,6 +13,11 @@
         android:title="User"
         app:showAsAction="always" />
     <item
+        android:id="@+id/itemBookmark"
+        android:icon="@drawable/ic_baseline_bookmark_24"
+        android:title="Bookmark"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/itemProfile"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"

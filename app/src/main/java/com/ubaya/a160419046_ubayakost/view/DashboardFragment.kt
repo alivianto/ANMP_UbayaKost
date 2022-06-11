@@ -1,12 +1,13 @@
 package com.ubaya.a160419046_ubayakost.view
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419046_ubayakost.GlobalData
 import com.ubaya.a160419046_ubayakost.R
@@ -14,6 +15,7 @@ import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.viewModel.KostListViewModel
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_kost_list.*
+import java.util.*
 
 
 /**
@@ -45,6 +47,8 @@ class DashboardFragment : Fragment() {
             val action = DashboardFragmentDirections.actionItemHomeToKostList()
             Navigation.findNavController(it).navigate(action)
         }
+
+        setHasOptionsMenu(true)
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
@@ -66,5 +70,22 @@ class DashboardFragment : Fragment() {
             }
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_search, menu)
+        val item = menu?.findItem(R.id.itemSearch)
+
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.itemSearch){
+            val action = DashboardFragmentDirections.actionItemHomeToSearchFragment()
+            findNavController().navigate(action)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 
 }
