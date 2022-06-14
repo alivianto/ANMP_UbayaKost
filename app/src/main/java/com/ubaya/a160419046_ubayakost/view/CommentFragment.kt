@@ -27,7 +27,7 @@ class CommentFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_comment, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var kostid = ""
+        var kostid = 0
         arguments?.let {
             kostid = CommentFragmentArgs.fromBundle(requireArguments()).kostid
         }

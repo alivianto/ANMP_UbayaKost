@@ -6,8 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Kost(
-    @ColumnInfo(name="id")
-    val id:String?,
     @ColumnInfo(name="nama_kos")
     val nama_kos:String?,
     @ColumnInfo(name="jenis")
@@ -55,7 +53,6 @@ data class Bookmark(
 
 @Entity
 data class User(
-    val id:String?,
     @ColumnInfo(name="name")
     val name:String?,
     @ColumnInfo(name="email")
