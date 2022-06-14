@@ -18,7 +18,7 @@
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:id="@+id/title_login"
+            android:id="@+id/title_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -49,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputSearch"
+                android:id="@+id/inputName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
@@ -73,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_login"
+                android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
@@ -82,7 +82,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonRegister"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginStart="24dp"
@@ -130,8 +130,8 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
             android:text="Username"
-            app:layout_constraintStart_toStartOf="@+id/title_login"
-            app:layout_constraintTop_toBottomOf="@+id/title_login" />
+            app:layout_constraintStart_toStartOf="@+id/title_register"
+            app:layout_constraintTop_toBottomOf="@+id/title_register" />
 
         <TextView
             android:id="@+id/textView3"

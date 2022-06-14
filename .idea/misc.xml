@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/activity_login.xml" value="0.4586977648202138" />
+        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/activity_register.xml" value="0.4" />
         <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_comment.xml" value="0.10729166666666666" />
         <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_dashboard.xml" value="0.24583333333333332" />
         <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_kost_list_detail.xml" value="0.4" />
