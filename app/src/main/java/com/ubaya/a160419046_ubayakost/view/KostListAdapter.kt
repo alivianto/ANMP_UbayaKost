@@ -27,6 +27,7 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         //val arraykost = kostList[position]
         with(holder.view){
             kost = kostList[position]
+
             kostListener = this@KostListAdapter
 //            textViewKostName.text = arraykost.nama_kos
 //            textViewJenis.text = arraykost.jenis

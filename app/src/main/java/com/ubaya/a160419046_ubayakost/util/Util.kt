@@ -1,14 +1,33 @@
 package com.ubaya.a160419046_ubayakost.util
 
+import android.content.Context
 import android.media.Image
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
+import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.ubaya.a160419046_ubayakost.R
+import com.ubaya.a160419046_ubayakost.model.KostDatabase
 import java.lang.Exception
+
+//val DB_NAME = "kostdb"
+//
+//fun buildDb(context: Context) =
+//    Room.databaseBuilder(context, KostDatabase::class.java, "kostdb")
+//        .addMigrations(MIGRATION_1_2)
+//        .build()
+//
+//val MIGRATION_1_2 = object : Migration(1, 2) {
+//    override fun migrate(database: SupportSQLiteDatabase) {
+//        database.execSQL("ALTER TABLE kost ADD COLUMN ndatau VARCHAR DEFAULT '' NOT NULL")
+//    }
+//}
+
 
 @BindingAdapter("android:imageUrl","android:progressBar")
 fun loadImageFromUrl(view: ImageView, url: String?, pb: ProgressBar) {

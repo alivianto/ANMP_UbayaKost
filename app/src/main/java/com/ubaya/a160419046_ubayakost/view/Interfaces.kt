@@ -1,5 +1,6 @@
 package com.ubaya.a160419046_ubayakost.view
 
+import android.icu.text.DecimalFormat
 import android.view.View
 
 interface KostListSeeDetailClickListener {
