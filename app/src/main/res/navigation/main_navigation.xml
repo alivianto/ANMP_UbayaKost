@@ -30,7 +30,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="kostid"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/kostListDetailFragment"
@@ -48,7 +48,7 @@
             app:destination="@id/facilityFragment" />
         <argument
             android:name="kostid"
-            app:argType="string" />
+            app:argType="integer" />
         <action
             android:id="@+id/action_kostListDetailFragment_to_kostList"
             app:destination="@id/kostList" />
@@ -65,7 +65,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="kostid"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemProfile"

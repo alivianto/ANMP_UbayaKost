@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_user_detail.*
 class KostListDetailFragment : Fragment(), KostSeeDetailClickListener {
     private lateinit var viewModel: KostDetailViewModel
     private lateinit var dataBinding: FragmentKostListDetailBinding
-    var kostid = ""
+    var kostid = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

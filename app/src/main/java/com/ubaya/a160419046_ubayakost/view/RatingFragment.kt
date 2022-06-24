@@ -26,7 +26,7 @@ class RatingFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_rating, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var kostid = ""
+        var kostid = 0
         arguments?.let {
             kostid = RatingFragmentArgs.fromBundle(requireArguments()).kostid
         }

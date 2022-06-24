@@ -17,7 +17,7 @@ class UserDetailViewModel(application: Application) : AndroidViewModel(applicati
     val TAG = "volleyTag"
     private var queue: RequestQueue?=null
 
-    fun fetch(id:String?){
+    fun fetch(id:Int?){
 
         queue = Volley.newRequestQueue(getApplication())
         val url = "https://cleonard712.github.io/kostJson/user.json"
@@ -28,7 +28,7 @@ class UserDetailViewModel(application: Application) : AndroidViewModel(applicati
                 val result = Gson().fromJson<ArrayList<User>>(it,sType)
                 for (useritem in result)
                 {
-                    if (useritem.id == id)
+                    if (useritem.userid == id)
                     {
                         userLiveData.value = useritem
                     }

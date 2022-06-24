@@ -52,8 +52,10 @@ class DashboardFragment : Fragment() {
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
-            val arraykost:List<Kost> = it.slice(0..3)
-            kostListAdapter.updatekostlist(ArrayList(arraykost))
+            //val arraykost:List<Kost> = it.slice(0..3)
+            //kostListAdapter.updatekostlist(ArrayList(arraykost))
+            kostListAdapter.updatekostlist(it)
+
         }
         viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
             textViewErrorDashboard.visibility = if(it) View.VISIBLE else View.GONE

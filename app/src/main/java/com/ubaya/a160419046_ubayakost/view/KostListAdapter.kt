@@ -46,7 +46,7 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
     }
 
     override fun getItemCount() = kostList.size
-    fun updatekostlist(newkostlist:ArrayList<Kost>){
+    fun updatekostlist(newkostlist: List<Kost>){
         kostList.clear()
         kostList.addAll(newkostlist)
         notifyDataSetChanged()
@@ -55,10 +55,10 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
     override fun onKostListSeeDetailClick(view: View) {
         var action:NavDirections
         if(GlobalData.currentFragment =="dashboard"){
-            action = DashboardFragmentDirections.actionItemHomeToKostListDetailFragment(view.tag.toString())
+            action = DashboardFragmentDirections.actionItemHomeToKostListDetailFragment(view.tag.toString().toInt())
         }
         else{
-            action = KostListFragmentDirections.actionKostListToKostListDetailFragment(view.tag.toString())
+            action = KostListFragmentDirections.actionKostListToKostListDetailFragment(view.tag.toString().toInt())
         }
         Navigation.findNavController(view).navigate(action)
     }

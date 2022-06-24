@@ -31,7 +31,7 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(UserDetailViewModel::class.java)
-        viewModel.fetch(GlobalData.userid)
+        viewModel.fetch(GlobalData.userid.toInt())
 
         observeViewModel()
     }

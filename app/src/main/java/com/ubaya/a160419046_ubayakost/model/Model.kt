@@ -31,7 +31,7 @@ data class Kost(
 data class Comment(
     @ColumnInfo(name="kostid")
     val kostid: Int,
-    @ColumnInfo(name="kostid")
+    @ColumnInfo(name="userid")
     val userid: Int,
     @ColumnInfo(name="comment")
     val comment: String

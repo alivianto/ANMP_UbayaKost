@@ -3,15 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/activity_login.xml" value="0.4586977648202138" />
-        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/activity_register.xml" value="0.4" />
-        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_comment.xml" value="0.10729166666666666" />
-        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_dashboard.xml" value="0.24583333333333332" />
-        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_kost_list_detail.xml" value="0.4" />
-        <entry key="..\:/ProjectAndroid/ANMP_UbayaKost/app/src/main/res/layout/fragment_user_detail.xml" value="0.10729166666666666" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.38333333333333336" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
+        <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/activity_register.xml" value="0.15806159420289856" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/card_kost_item.xml" value="0.3671875" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/card_user_item.xml" value="0.3671875" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/fragment_bookmark.xml" value="0.3671875" />

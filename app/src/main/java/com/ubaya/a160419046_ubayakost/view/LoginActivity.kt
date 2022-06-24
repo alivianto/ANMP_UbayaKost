@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
                     {
                         if (useritem.username == username && useritem.password == pass)
                         {
-                            GlobalData.userid = useritem.id.toString()
+                            GlobalData.userid = useritem.userid.toString()
                             status = true
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
