@@ -10,8 +10,8 @@ interface UserDao {
     @Query("SELECT * FROM user")
     suspend fun selectAllUser(): List<User>
 
-    @Query("SELECT * FROM user WHERE userid= :id")
-    suspend fun selectUser(id: Int): User
+    @Query("SELECT * FROM user WHERE username= :uname")
+    suspend fun selectUser(uname: String): User
 
     @Query("SELECT * FROM user WHERE username = :uname")
     suspend fun checkLoginUser(uname: String): User
