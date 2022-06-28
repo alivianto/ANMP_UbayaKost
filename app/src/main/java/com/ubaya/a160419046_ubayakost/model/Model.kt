@@ -10,6 +10,8 @@ data class Kost(
     var nama_kos:String?,
     @ColumnInfo(name="jenis")
     var jenis:String?,
+    @ColumnInfo(name="alamat")
+    var alamat:String?,
     @ColumnInfo(name="harga_per_bulan")
     var harga_per_bulan:String?,
     @ColumnInfo(name="fasilitas")

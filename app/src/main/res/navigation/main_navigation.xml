@@ -91,6 +91,9 @@
         <action
             android:id="@+id/action_itemHome_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_itemHome_to_formAddKostFragment"
+            app:destination="@id/formAddKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/kostList"
@@ -121,4 +124,9 @@
             android:id="@+id/action_searchFragment_to_itemHome"
             app:destination="@id/itemHome" />
     </fragment>
+    <fragment
+        android:id="@+id/formAddKostFragment"
+        android:name="com.ubaya.a160419046_ubayakost.view.FormAddKostFragment"
+        android:label="Form Add Kost"
+        tools:layout="@layout/fragment_form_add_kost" />
 </navigation>

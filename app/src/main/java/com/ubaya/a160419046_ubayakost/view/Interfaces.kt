@@ -15,3 +15,7 @@ interface KostSeeDetailClickListener {
 interface RegisterListener{
     fun onClickRegisterUser(view:View)
 }
+
+interface AddKostListener{
+    fun onClickAddKost(view:View)
+}

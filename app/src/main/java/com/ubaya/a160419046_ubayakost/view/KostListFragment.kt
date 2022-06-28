@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419046_ubayakost.GlobalData
 import com.ubaya.a160419046_ubayakost.R
 import com.ubaya.a160419046_ubayakost.viewModel.KostListViewModel
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 
 /**
@@ -49,21 +50,23 @@ class KostListFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
             kostListAdapter.updatekostlist(it)
+            textViewErrorKost.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+            progressLoadKost.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
         }
-        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
-            textViewErrorKost.visibility = if(it) View.VISIBLE else View.GONE
-        }
-        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-            if(it){//sedang loading
-                recKost.visibility = View.GONE
-                progressLoadKost.visibility = View.VISIBLE
-            }
-            else
-            {
-                recKost.visibility = View.VISIBLE
-                progressLoadKost.visibility = View.GONE
-            }
-        }
+//        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
+//            textViewErrorKost.visibility = if(it) View.VISIBLE else View.GONE
+//        }
+//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
+//            if(it){//sedang loading
+//                recKost.visibility = View.GONE
+//                progressLoadKost.visibility = View.VISIBLE
+//            }
+//            else
+//            {
+//                recKost.visibility = View.VISIBLE
+//                progressLoadKost.visibility = View.GONE
+//            }
+//        }
     }
 
 }

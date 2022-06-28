@@ -1,6 +1,7 @@
 package com.ubaya.a160419046_ubayakost.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -43,34 +44,43 @@ class DashboardFragment : Fragment() {
         recyclerView.adapter = kostListAdapter
 
         observeViewModel()
+
         buttonViewMore.setOnClickListener {
             val action = DashboardFragmentDirections.actionItemHomeToKostList()
             Navigation.findNavController(it).navigate(action)
         }
 
         setHasOptionsMenu(true)
+
+        fabAddKost.setOnClickListener {
+            val action = DashboardFragmentDirections.actionItemHomeToFormAddKostFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
             //val arraykost:List<Kost> = it.slice(0..3)
             //kostListAdapter.updatekostlist(ArrayList(arraykost))
             kostListAdapter.updatekostlist(it)
+            Log.d("list", it.toString())
+            textViewErrorDashboard.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+            progressLoadDashboard.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
 
         }
-        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
-            textViewErrorDashboard.visibility = if(it) View.VISIBLE else View.GONE
-        }
-        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-            if(it){//sedang loading
-                recyclerView.visibility = View.GONE
-                progressLoadDashboard.visibility = View.VISIBLE
-            }
-            else
-            {
-                recyclerView.visibility = View.VISIBLE
-                progressLoadDashboard.visibility = View.GONE
-            }
-        }
+//        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
+//            textViewErrorDashboard.visibility = if(it) View.VISIBLE else View.GONE
+//        }
+//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
+//            if(it){//sedang loading
+//                recyclerView.visibility = View.GONE
+//                progressLoadDashboard.visibility = View.VISIBLE
+//            }
+//            else
+//            {
+//                recyclerView.visibility = View.VISIBLE
+//                progressLoadDashboard.visibility = View.GONE
+//            }
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

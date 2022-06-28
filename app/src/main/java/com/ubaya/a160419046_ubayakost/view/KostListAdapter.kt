@@ -1,5 +1,6 @@
 package com.ubaya.a160419046_ubayakost.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.util.loadImage
 import kotlinx.android.synthetic.main.card_kost_item.view.*
 
-class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostListAdapter.KostViewHolder>(), KostListSeeDetailClickListener {
+class KostListAdapter(var kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostListAdapter.KostViewHolder>(), KostListSeeDetailClickListener {
     class KostViewHolder(var view: CardKostItemBinding):RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KostViewHolder {
@@ -24,11 +25,13 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
     }
 
     override fun onBindViewHolder(holder: KostViewHolder, position: Int) {
-        //val arraykost = kostList[position]
-        with(holder.view){
-            kost = kostList[position]
-
-            kostListener = this@KostListAdapter
+        val arraykost = kostList[position]
+        holder.view.kost = kostList[position]
+        holder.view.kostListener = this
+//        with(holder.view){
+//            kost = kostList[position]
+//
+//            kostListener = this@KostListAdapter
 //            textViewKostName.text = arraykost.nama_kos
 //            textViewJenis.text = arraykost.jenis
 //            buttonReadMore.setOnClickListener {
@@ -42,13 +45,15 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
 //                Navigation.findNavController(it).navigate(action)
 //            }
 //            imageViewKost.loadImage(arraykost.photo_url,progressBar)
-        }
+//        }
     }
 
     override fun getItemCount() = kostList.size
+
     fun updatekostlist(newkostlist: List<Kost>){
         kostList.clear()
         kostList.addAll(newkostlist)
+        Log.d("listberhasil",kostList.toString())
         notifyDataSetChanged()
     }
 

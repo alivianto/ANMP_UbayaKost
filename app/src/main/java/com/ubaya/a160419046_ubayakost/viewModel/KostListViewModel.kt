@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.model.KostDatabase
+import com.ubaya.a160419046_ubayakost.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -29,59 +30,31 @@ class KostListViewModel(application: Application) : AndroidViewModel(application
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    val TAG = "volleyTag"
-    private var queue: RequestQueue?=null
-
     fun refresh(){
-        kostLoadErrorLiveData.value = false
         loadingLiveData.value = true
+        kostLoadErrorLiveData.value = false
 
         launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                KostDatabase::class.java, "kostdatabase"
-            ).build()
+//            val db = Room.databaseBuilder(
+//                getApplication(),
+//                KostDatabase::class.java, "kostdatabase"
+//            ).build()
 
+            val db = buildDb(getApplication())
             kostLiveData.value = db.kostDao().selectAllKost()
         }
-
-//        queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://cleonard712.github.io/kostJson/kost.json"
-//
-//        val stringRequest = StringRequest(
-//            Request.Method.GET,url,{
-//                val sType = object : TypeToken<ArrayList<Kost>>(){}.type
-//                val result = Gson().fromJson<ArrayList<Kost>>(it,sType)
-//                kostLiveData.value = result
-//                loadingLiveData.value = false
-//                Log.d("showvolley",it)
-//            },
-//            {
-//                loadingLiveData.value = false
-//                kostLoadErrorLiveData.value = true
-//                Log.d("errorvolley",it.toString())
-//            }
-//        ).apply {
-//            tag = "TAG"
-//        }
-//        queue?.add(stringRequest)
     }
 
     fun deleteKost(kost: Kost) {
         launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                KostDatabase::class.java, "kostdatabase"
-            ).build()
-
+//            val db = Room.databaseBuilder(
+//                getApplication(),
+//                KostDatabase::class.java, "kostdatabase"
+//            ).build()
+            val db = buildDb(getApplication())
             db.kostDao().deleteKost(kost)
 
             kostLiveData.value = db.kostDao().selectAllKost()
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
     }
 }

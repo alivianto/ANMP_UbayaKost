@@ -13,8 +13,6 @@ interface KostDao {
     @Query("SELECT * FROM kost WHERE kostid= :id")
     suspend fun selectKost(id: Int): Kost
 
-
-
     @Delete
     suspend fun deleteKost(kost: Kost)
 }

@@ -15,18 +15,18 @@ import com.ubaya.a160419046_ubayakost.R
 import com.ubaya.a160419046_ubayakost.model.KostDatabase
 import java.lang.Exception
 
-val DB_NAME = "kostdb"
+val DB_NAME = "kostdatabase"
 
-//fun buildDb(context: Context) =
-//    Room.databaseBuilder(context, KostDatabase::class.java, "kostdb")
-//        .addMigrations(MIGRATION_1_2)
-//        .build()
-//
-//val MIGRATION_1_2 = object : Migration(1, 2) {
-//    override fun migrate(database: SupportSQLiteDatabase) {
-//        database.execSQL("ALTER TABLE user DROP COLUMN ndatau VARCHAR DEFAULT '' NOT NULL")
-//    }
-//}
+fun buildDb(context: Context) =
+    Room.databaseBuilder(context, KostDatabase::class.java, "kostdatabase")
+        .addMigrations(MIGRATION_1_2)
+        .build()
+
+val MIGRATION_1_2 = object : Migration(1, 2) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE kost ADD COLUMN alamat VARCHAR(50)")
+    }
+}
 
 
 
