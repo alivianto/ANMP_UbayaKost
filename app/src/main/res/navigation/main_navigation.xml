@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_kostListDetailFragment_to_kostList"
             app:destination="@id/kostList" />
+        <action
+            android:id="@+id/action_kostListDetailFragment_to_itemBookmark"
+            app:destination="@id/itemBookmark" />
     </fragment>
     <fragment
         android:id="@+id/ratingFragment"
@@ -111,7 +114,11 @@
         android:id="@+id/itemBookmark"
         android:name="com.ubaya.a160419046_ubayakost.view.BookmarkFragment"
         android:label="Bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_itemBookmark_to_kostListDetailFragment"
+            app:destination="@id/kostListDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.ubaya.a160419046_ubayakost.view.SearchFragment"

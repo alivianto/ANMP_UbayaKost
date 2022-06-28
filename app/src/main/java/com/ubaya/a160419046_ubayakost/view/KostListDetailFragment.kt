@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.ubaya.a160419046_ubayakost.GlobalData
 import com.ubaya.a160419046_ubayakost.R
 import com.ubaya.a160419046_ubayakost.databinding.FragmentKostListDetailBinding
+import com.ubaya.a160419046_ubayakost.model.Bookmark
 import com.ubaya.a160419046_ubayakost.util.loadImage
 import com.ubaya.a160419046_ubayakost.viewModel.KostDetailViewModel
 import com.ubaya.a160419046_ubayakost.viewModel.UserDetailViewModel
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_user_detail.*
  * Use the [KostListDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class KostListDetailFragment : Fragment(), KostSeeDetailClickListener {
+class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMarkListener {
     private lateinit var viewModel: KostDetailViewModel
     private lateinit var dataBinding: FragmentKostListDetailBinding
     var kostid = 0
@@ -42,7 +43,6 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener {
         }
         viewModel = ViewModelProvider(this).get(KostDetailViewModel::class.java)
         viewModel.fetch(kostid)
-
         observeViewModel()
 //        buttonFasilitas.setOnClickListener {
 //            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToFacilityFragment(kostid)
@@ -56,18 +56,10 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener {
 //            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToRatingFragment(kostid)
 //            Navigation.findNavController(it).navigate(action)
 //        }
-        var status = false
-        imageButtonBookmark.setOnClickListener {
-            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-            if(status){
-                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24)
-            } else {
-                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24)
-            }
-            status = !status
-        }
+
 
         dataBinding.kostListener = this
+        dataBinding.bookmarkListener = this
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
@@ -93,6 +85,27 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener {
     override fun onKostSeeCommentClick(view: View) {
         val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToCommentFragment(kostid)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onClickBookmark(view: View) {
+        var status = true
+        dataBinding.bookmark = Bookmark(GlobalData.userid, kostid)
+        imageButtonBookmark.setOnClickListener {
+            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
+            if(status){
+                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24)
+                dataBinding.bookmark?.let {
+                    viewModel.deteleBookmark(it)
+                }
+            } else {
+                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24)
+                dataBinding.bookmark?.let {
+                    val list = listOf(it)
+                    viewModel.addBookmark(list)
+                }
+            }
+            status = !status
+        }
     }
 
 }

@@ -45,6 +45,8 @@ class KostListViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+
+
     fun deleteKost(kost: Kost) {
         launch {
 //            val db = Room.databaseBuilder(
@@ -57,4 +59,6 @@ class KostListViewModel(application: Application) : AndroidViewModel(application
             kostLiveData.value = db.kostDao().selectAllKost()
         }
     }
+
+
 }

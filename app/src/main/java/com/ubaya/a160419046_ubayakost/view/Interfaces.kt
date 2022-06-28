@@ -19,3 +19,7 @@ interface RegisterListener{
 interface AddKostListener{
     fun onClickAddKost(view:View)
 }
+
+interface AddBookMarkListener{
+    fun onClickBookmark(view: View)
+}

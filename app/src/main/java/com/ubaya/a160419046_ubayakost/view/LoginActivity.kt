@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
                 Log.d("checkLoginData",check.toString())
                 if(check){
                     GlobalData.username = username
+                    GlobalData.userid = it.userid
                     Toast.makeText(this,"Berhasil login",Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)

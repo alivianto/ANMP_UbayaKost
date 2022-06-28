@@ -11,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ubaya.a160419046_ubayakost.model.Bookmark
 import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.model.KostDatabase
 import com.ubaya.a160419046_ubayakost.util.buildDb
@@ -38,6 +39,22 @@ class KostDetailViewModel(application: Application) : AndroidViewModel(applicati
 //            ).build()
             val db = buildDb(getApplication())
             db.kostDao().insertAll(*list.toTypedArray())
+        }
+    }
+
+    fun addBookmark(list: List<Bookmark>) {
+        launch {
+//            val db = Room.databaseBuilder(
+//                getApplication(), KostDatabase::class.java, "kostdatabase"
+//            ).build()
+            val db = buildDb(getApplication())
+            db.bookmarkDao().insertAll(*list.toTypedArray())
+        }
+    }
+    fun deteleBookmark(bookmark: Bookmark){
+        launch {
+            val db = buildDb(getApplication())
+            db.bookmarkDao().deleteBookmark(bookmark)
         }
     }
 
