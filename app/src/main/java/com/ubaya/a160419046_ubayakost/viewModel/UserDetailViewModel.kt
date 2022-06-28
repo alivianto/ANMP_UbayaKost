@@ -4,48 +4,52 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ubaya.a160419046_ubayakost.model.Kost
+import com.ubaya.a160419046_ubayakost.model.KostDatabase
 import com.ubaya.a160419046_ubayakost.model.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class UserDetailViewModel(application: Application) : AndroidViewModel(application) {
+class UserDetailViewModel(application: Application) : AndroidViewModel(application),CoroutineScope {
     val userLiveData = MutableLiveData<User>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue?=null
+    private val job = Job()
 
-    fun fetch(id:Int?){
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "https://cleonard712.github.io/kostJson/user.json"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET,url,{
-                val sType = object : TypeToken<ArrayList<User>>(){}.type
-                val result = Gson().fromJson<ArrayList<User>>(it,sType)
-                for (useritem in result)
-                {
-                    if (useritem.userid == id)
-                    {
-                        userLiveData.value = useritem
-                    }
-                }
-                Log.d("showvolley",it)
-            },
-            {
-                Log.d("errorvolley",it.toString())
-            }
-        ).apply {
-            tag = "TAG"
+    fun adduser(list: List<User>) {
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(), KostDatabase::class.java, "kostdatabase"
+            ).build()
+            db.userDao().insertAll(*list.toTypedArray())
         }
-        queue?.add(stringRequest)
+    }
+    fun fetch(id:Int){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(), KostDatabase::class.java, "kostdatabase"
+            ).build()
+            userLiveData.value = db.userDao().selectUser(id)
+        }
+    }
+    fun checklogin(username:String,password:String){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(), KostDatabase::class.java, "kostdatabase"
+            ).build()
+            userLiveData.value = db.userDao().checkLoginUser(username,password)
+        }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
-    }
 }

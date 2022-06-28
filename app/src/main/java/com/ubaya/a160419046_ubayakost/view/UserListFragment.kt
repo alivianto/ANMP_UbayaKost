@@ -48,7 +48,7 @@ class UserListFragment : Fragment() {
     }
     private fun observeViewModel() {
         viewModel.userLiveData.observe(viewLifecycleOwner){
-            userListAdapter.updateuserlist(it)
+//            userListAdapter.updateuserlist(it)
         }
         viewModel.userLoadErrorLiveData.observe(viewLifecycleOwner){
             textViewError.visibility = if(it) View.VISIBLE else View.GONE

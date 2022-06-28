@@ -33,7 +33,7 @@ class KostDetailViewModel(application: Application) : AndroidViewModel(applicati
     fun addKost(list: List<Kost>) {
         launch {
             val db = Room.databaseBuilder(
-                getApplication(), KostDatabase::class.java, "kostdb"
+                getApplication(), KostDatabase::class.java, "kostdatabase"
             ).build()
             db.kostDao().insertAll(*list.toTypedArray())
         }
@@ -42,7 +42,7 @@ class KostDetailViewModel(application: Application) : AndroidViewModel(applicati
     fun fetch(uuid: Int){
         launch {
             val db = Room.databaseBuilder(
-                getApplication(), KostDatabase::class.java, "kostdb"
+                getApplication(), KostDatabase::class.java, "kostdatabase"
             ).build()
             kostLiveData.value = db.kostDao().selectKost(uuid)
         }

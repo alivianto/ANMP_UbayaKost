@@ -12,3 +12,6 @@ interface KostSeeDetailClickListener {
     fun onKostSeeRatingClick(view: View)
     fun onKostSeeCommentClick(view: View)
 }
+interface RegisterListener{
+    fun onClickRegisterUser(view:View)
+}

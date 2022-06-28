@@ -8,6 +8,9 @@ import androidx.room.RoomDatabase
 @Database(entities = [Kost::class, Comment::class, Bookmark::class, User::class], version = 1)
 abstract class KostDatabase: RoomDatabase() {
     abstract fun kostDao(): KostDao
+    abstract fun userDao():UserDao
+    abstract fun bookmarkDao():BookmarkDao
+    abstract fun commentDao():CommentDao
 
     companion object {
         @Volatile private var instance: RoomDatabase ?= null
@@ -17,7 +20,7 @@ abstract class KostDatabase: RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 KostDatabase::class.java,
-                "kostdb"
+                "kostdatabase"
             ).build()
 
         operator fun invoke(context: Context) {

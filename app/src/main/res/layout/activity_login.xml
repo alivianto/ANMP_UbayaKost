@@ -143,5 +143,26 @@
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Not Have account?"
+            app:layout_constraintEnd_toEndOf="@+id/buttonRegister"
+            app:layout_constraintStart_toStartOf="@+id/buttonRegister"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+
+        <TextView
+            android:id="@+id/textViewRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Register"
+            android:textColor="@color/purple_700"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

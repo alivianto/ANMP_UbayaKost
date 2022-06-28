@@ -4,53 +4,46 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ubaya.a160419046_ubayakost.model.KostDatabase
 import com.ubaya.a160419046_ubayakost.model.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class UserListViewModel(application: Application) : AndroidViewModel(application) {
-    val userLiveData = MutableLiveData<ArrayList<User>>()
+class UserListViewModel(application: Application) : AndroidViewModel(application),CoroutineScope {
+    val userLiveData = MutableLiveData<List<User>>()
     val userLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
     private var queue: RequestQueue?=null
 
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
+
+
     fun refresh(){
         userLoadErrorLiveData.value = false
         loadingLiveData.value = true
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "https://cleonard712.github.io/kostJson/user.json"
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                KostDatabase::class.java, "kostdatabase"
+            ).build()
 
-        val stringRequest = StringRequest(
-            Request.Method.GET,url,{
-                val sType = object : TypeToken<ArrayList<User>>(){}.type
-                val result = Gson().fromJson<ArrayList<User>>(it,sType)
-                var arruser:ArrayList<User> = arrayListOf()
-                for (useritem in result)
-                {
-                    if (useritem.active == "1")
-                    {
-                        arruser.add(useritem)
-                    }
-                }
-                userLiveData.value = arruser
-                loadingLiveData.value = false
-                Log.d("showvolley",it)
-            },
-            {
-                loadingLiveData.value = false
-                userLoadErrorLiveData.value = true
-                Log.d("errorvolley",it.toString())
-            }
-        ).apply {
-            tag = "TAG"
+            userLiveData.value = db.userDao().selectAllUser()
         }
-        queue?.add(stringRequest)
     }
 
     override fun onCleared() {
