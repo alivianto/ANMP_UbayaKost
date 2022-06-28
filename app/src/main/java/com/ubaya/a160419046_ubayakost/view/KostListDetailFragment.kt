@@ -88,11 +88,11 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
     }
 
     override fun onClickBookmark(view: View) {
-        var status = true
+        var status = false
         dataBinding.bookmark = Bookmark(GlobalData.userid, kostid)
         imageButtonBookmark.setOnClickListener {
             Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-            if(status){
+            if(status==true){
                 imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24)
                 dataBinding.bookmark?.let {
                     viewModel.deteleBookmark(it)

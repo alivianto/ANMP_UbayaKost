@@ -19,6 +19,7 @@ class UserListAdapter(val userList:ArrayList<User>) : RecyclerView.Adapter<UserL
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.card_user_item,parent,false)
+
         return UserListAdapter.UserViewHolder(view)
     }
 
@@ -31,7 +32,7 @@ class UserListAdapter(val userList:ArrayList<User>) : RecyclerView.Adapter<UserL
     }
 
     override fun getItemCount() = userList.size
-    fun updateuserlist(newuserlist:ArrayList<User>){
+    fun updateuserlist(newuserlist:List<User>){
         userList.clear()
         userList.addAll(newuserlist)
         notifyDataSetChanged()
