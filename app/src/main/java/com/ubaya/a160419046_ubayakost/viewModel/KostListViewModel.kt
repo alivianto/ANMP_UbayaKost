@@ -45,6 +45,16 @@ class KostListViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun searchKost(kataPencarian: String){
+        loadingLiveData.value = true
+        kostLoadErrorLiveData.value = false
+
+        launch {
+            val db = buildDb(getApplication())
+            kostLiveData.value = db.kostDao().searchKost(kataPencarian)
+        }
+    }
+
 
 
     fun deleteKost(kost: Kost) {

@@ -130,6 +130,9 @@
         <action
             android:id="@+id/action_searchFragment_to_itemHome"
             app:destination="@id/itemHome" />
+        <action
+            android:id="@+id/action_searchFragment_to_kostListDetailFragment"
+            app:destination="@id/kostListDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/formAddKostFragment"

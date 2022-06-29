@@ -13,6 +13,9 @@ interface KostDao {
     @Query("SELECT * FROM kost WHERE kostid= :id")
     suspend fun selectKost(id: Int): Kost
 
+    @Query("SELECT * FROM kost WHERE nama_kos LIKE '%' || :kataPencarian || '%'")
+    suspend fun searchKost(kataPencarian: String): List<Kost>
+
     @Delete
     suspend fun deleteKost(kost: Kost)
 }

@@ -23,3 +23,7 @@ interface AddKostListener{
 interface AddBookMarkListener{
     fun onClickBookmark(view: View)
 }
+
+interface SearchKostListener{
+    fun onClickSearchKost(view: View)
+}

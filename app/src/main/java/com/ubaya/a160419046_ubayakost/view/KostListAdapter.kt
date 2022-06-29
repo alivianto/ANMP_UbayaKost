@@ -65,6 +65,9 @@ class KostListAdapter(var kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         else if(GlobalData.currentFragment == "BookmarkFragment"){
             action = BookmarkFragmentDirections.actionItemBookmarkToKostListDetailFragment(view.tag.toString().toInt())
         }
+        else if(GlobalData.currentFragment == "SearchFragment"){
+            action = SearchFragmentDirections.actionSearchFragmentToKostListDetailFragment(view.tag.toString().toInt())
+        }
         else{
             action = KostListFragmentDirections.actionKostListToKostListDetailFragment(view.tag.toString().toInt())
         }
