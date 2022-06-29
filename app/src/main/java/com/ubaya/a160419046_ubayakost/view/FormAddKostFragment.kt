@@ -7,10 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.ubaya.a160419046_ubayakost.R
 import com.ubaya.a160419046_ubayakost.databinding.FragmentFormAddKostBinding
 import com.ubaya.a160419046_ubayakost.model.Kost
+import com.ubaya.a160419046_ubayakost.util.KostWorker
+import com.ubaya.a160419046_ubayakost.util.NotificationHelper
 import com.ubaya.a160419046_ubayakost.viewModel.KostDetailViewModel
+import java.util.concurrent.TimeUnit
 
 /**
  * A simple [Fragment] subclass.
@@ -41,10 +47,18 @@ class FormAddKostFragment : Fragment(), AddKostListener {
     }
 
     override fun onClickAddKost(view: View) {
-        dataBinding.kost?.let{
+        dataBinding.kost?.let {
             val list = listOf(it)
             viewModel.addKost(list)
             Navigation.findNavController(view).popBackStack()
+            val myWorkRequest = OneTimeWorkRequestBuilder<KostWorker>()
+                .setInitialDelay(2, TimeUnit.SECONDS)
+                .setInputData(workDataOf(
+                    "title" to "Kost ditambahkan",
+                    "message" to "${it.nama_kos} berhasil ditambahkan, segera cek sekarang!"
+                )).build()
+            WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
+
         }
     }
 
