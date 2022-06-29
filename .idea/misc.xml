@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Data Kuliah/Semester 6/Advanced Native Mobile Programming/UAS/ANMP_UbayaKost/app/src/main/res/layout/card_kost_item.xml" value="0.15572916666666667" />
+        <entry key="..\:/Data Kuliah/Semester 6/Advanced Native Mobile Programming/UAS/ANMP_UbayaKost/app/src/main/res/layout/card_user_item.xml" value="0.10054347826086957" />
+        <entry key="..\:/Data Kuliah/Semester 6/Advanced Native Mobile Programming/UAS/ANMP_UbayaKost/app/src/main/res/layout/fragment_user_list.xml" value="0.10054347826086957" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.38333333333333336" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Andi/AndroidStudioProjects/UAS_ANMP/160419046_UbayaKost/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
