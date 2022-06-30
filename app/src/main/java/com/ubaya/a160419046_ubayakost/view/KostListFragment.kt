@@ -40,7 +40,7 @@ class KostListFragment : Fragment() {
         observeViewModel()
 
         refreshLayout.setOnRefreshListener {
-            recKost.visibility = View.GONE
+            recKost.visibility = View.VISIBLE
             textViewErrorKost.visibility = View.GONE
             progressLoadKost.visibility = View.VISIBLE
             viewModel.refresh()

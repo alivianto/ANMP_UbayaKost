@@ -39,7 +39,7 @@ class UserListFragment : Fragment() {
         observeViewModel()
 
         refreshlayoutuserlist.setOnRefreshListener {
-            recView_user.visibility = View.GONE
+            recView_user.visibility = View.VISIBLE
             textViewError.visibility = View.GONE
             progressLoadUser.visibility = View.VISIBLE
             viewModel.refresh()
