@@ -15,7 +15,6 @@ import com.ubaya.a160419046_ubayakost.R
 import com.ubaya.a160419046_ubayakost.model.KostDatabase
 import java.lang.Exception
 
-val DB_NAME = "kostdatabase"
 
 fun buildDb(context: Context) =
     Room.databaseBuilder(context, KostDatabase::class.java, "kostdatabase")

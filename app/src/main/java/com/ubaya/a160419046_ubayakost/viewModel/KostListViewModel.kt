@@ -35,11 +35,6 @@ class KostListViewModel(application: Application) : AndroidViewModel(application
         kostLoadErrorLiveData.value = false
 
         launch {
-//            val db = Room.databaseBuilder(
-//                getApplication(),
-//                KostDatabase::class.java, "kostdatabase"
-//            ).build()
-
             val db = buildDb(getApplication())
             kostLiveData.value = db.kostDao().selectAllKost()
         }
@@ -54,21 +49,4 @@ class KostListViewModel(application: Application) : AndroidViewModel(application
             kostLiveData.value = db.kostDao().searchKost(kataPencarian)
         }
     }
-
-
-
-    fun deleteKost(kost: Kost) {
-        launch {
-//            val db = Room.databaseBuilder(
-//                getApplication(),
-//                KostDatabase::class.java, "kostdatabase"
-//            ).build()
-            val db = buildDb(getApplication())
-            db.kostDao().deleteKost(kost)
-
-            kostLiveData.value = db.kostDao().selectAllKost()
-        }
-    }
-
-
 }

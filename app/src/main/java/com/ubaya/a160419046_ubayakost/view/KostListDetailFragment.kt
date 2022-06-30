@@ -35,7 +35,6 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
     ): View? {
         // Inflate the layout for this fragment
         dataBinding = FragmentKostListDetailBinding.inflate(inflater, container, false)
-        //return inflater.inflate(R.layout.fragment_kost_list_detail, container, false)
         return dataBinding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +53,6 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
             } else {
                 imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24)
             }
-            Log.d("gatau",it.toString())
             status = it
         }
 
@@ -64,11 +62,6 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
             dataBinding.kost = it
-//            textViewNameOfKost.text = it.nama_kos
-//            textViewJenisKost.text = it.jenis
-//            textViewHarga.text = it.harga_per_bulan
-//            textViewNoTelepon.text = it.no_telepon
-//            imageViewKostDetail.loadImage(it.photo_url,progressBarPhotoDetail)
         }
     }
 

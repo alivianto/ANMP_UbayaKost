@@ -53,22 +53,5 @@ class UserListFragment : Fragment() {
             progressLoadUser.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
 
         }
-//        viewModel.userLiveData.observe(viewLifecycleOwner){
-////            userListAdapter.updateuserlist(it)
-//        }
-//        viewModel.userLoadErrorLiveData.observe(viewLifecycleOwner){
-//            textViewError.visibility = if(it) View.VISIBLE else View.GONE
-//        }
-//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-//            if(it){//sedang loading
-//                recView_user.visibility = View.GONE
-//                progressLoadUser.visibility = View.VISIBLE
-//            }
-//            else
-//            {
-//                recView_user.visibility = View.VISIBLE
-//                progressLoadUser.visibility = View.GONE
-//            }
-//        }
     }
 }

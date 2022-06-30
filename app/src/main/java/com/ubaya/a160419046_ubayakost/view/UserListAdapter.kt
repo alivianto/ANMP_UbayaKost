@@ -25,12 +25,8 @@ class UserListAdapter(val userList:ArrayList<User>) : RecyclerView.Adapter<UserL
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val arrayuser = userList[position]
         holder.view.user = userList[position]
-//        with(holder.view){
-//            textViewUserName.text = arrayuser.name
-//            textViewEmail.text = arrayuser.email
-//        }
+
     }
 
     override fun getItemCount() = userList.size

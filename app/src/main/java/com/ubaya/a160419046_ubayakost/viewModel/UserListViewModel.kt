@@ -42,8 +42,6 @@ class UserListViewModel(application: Application) : AndroidViewModel(application
                 getApplication(),
                 KostDatabase::class.java, "kostdatabase"
             ).build()
-//            val db = buildDb(getApplication())
-
             userLiveData.value = db.userDao().selectAllUser()
         }
     }

@@ -59,28 +59,11 @@ class DashboardFragment : Fragment() {
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
-            //val arraykost:List<Kost> = it.slice(0..3)
-            //kostListAdapter.updatekostlist(ArrayList(arraykost))
             kostListAdapter.updatekostlist(it)
-            Log.d("list", it.toString())
             textViewErrorDashboard.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
             progressLoadDashboard.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
 
         }
-//        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
-//            textViewErrorDashboard.visibility = if(it) View.VISIBLE else View.GONE
-//        }
-//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-//            if(it){//sedang loading
-//                recyclerView.visibility = View.GONE
-//                progressLoadDashboard.visibility = View.VISIBLE
-//            }
-//            else
-//            {
-//                recyclerView.visibility = View.VISIBLE
-//                progressLoadDashboard.visibility = View.GONE
-//            }
-//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

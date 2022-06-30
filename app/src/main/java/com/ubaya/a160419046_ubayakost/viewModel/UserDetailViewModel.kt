@@ -30,27 +30,12 @@ class UserDetailViewModel(application: Application) : AndroidViewModel(applicati
 
     fun adduser(list: List<User>) {
         launch {
-//            val db = Room.databaseBuilder(
-//                getApplication(), KostDatabase::class.java, "kostdatabase"
-//            ).build()
             val db = buildDb(getApplication())
             db.userDao().insertAll(*list.toTypedArray())
         }
     }
-//    fun fetch(id:Int){
-//        launch {
-////            val db = Room.databaseBuilder(
-////                getApplication(), KostDatabase::class.java, "kostdatabase"
-////            ).build()
-//            val db = buildDb(getApplication())
-//            userLiveData.value = db.userDao().selectUser(id)
-//        }
-//    }
     fun checklogin(uname:String,pass:String) {
         launch {
-//            val db = Room.databaseBuilder(
-//                getApplication(), KostDatabase::class.java, "kostdatabase"
-//            ).build()
             val db = buildDb(getApplication())
             userLiveData.value = db.userDao().checkLoginUser(uname)
         }

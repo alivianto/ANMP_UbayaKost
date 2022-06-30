@@ -53,20 +53,7 @@ class KostListFragment : Fragment() {
             textViewErrorKost.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
             progressLoadKost.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
         }
-//        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
-//            textViewErrorKost.visibility = if(it) View.VISIBLE else View.GONE
-//        }
-//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-//            if(it){//sedang loading
-//                recKost.visibility = View.GONE
-//                progressLoadKost.visibility = View.VISIBLE
-//            }
-//            else
-//            {
-//                recKost.visibility = View.VISIBLE
-//                progressLoadKost.visibility = View.GONE
-//            }
-//        }
+
     }
 
 }
