@@ -4,4 +4,5 @@ object GlobalData {
     var currentFragment = ""
     var userid = 0
     var username = ""
+    var checkBookmark = 0
 }

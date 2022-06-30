@@ -1,15 +1,18 @@
 package com.ubaya.a160419046_ubayakost.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419046_ubayakost.GlobalData
 import com.ubaya.a160419046_ubayakost.R
+import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.viewModel.BookmarkViewModel
 import kotlinx.android.synthetic.main.fragment_bookmark.*
 
@@ -40,6 +43,7 @@ class BookmarkFragment : Fragment() {
         viewModel.bookmarkLiveData.observe(viewLifecycleOwner){
             kostListAdapter.updatekostlist(it)
         }
-    }
 
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.ubaya.a160419046_ubayakost.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
     private lateinit var viewModel: KostDetailViewModel
     private lateinit var dataBinding: FragmentKostListDetailBinding
     var kostid = 0
+    var status = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,19 +46,17 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
         viewModel = ViewModelProvider(this).get(KostDetailViewModel::class.java)
         viewModel.fetch(kostid)
         observeViewModel()
-//        buttonFasilitas.setOnClickListener {
-//            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToFacilityFragment(kostid)
-//            Navigation.findNavController(it).navigate(action)
-//        }
-//        buttonComment.setOnClickListener {
-//            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToCommentFragment(kostid)
-//            Navigation.findNavController(it).navigate(action)
-//        }
-//        buttonRating.setOnClickListener {
-//            val action = KostListDetailFragmentDirections.actionKostListDetailFragmentToRatingFragment(kostid)
-//            Navigation.findNavController(it).navigate(action)
-//        }
 
+        viewModel.checkBookmark(kostid)
+        viewModel.checkBookmark.observe(viewLifecycleOwner) {
+            if(it == 0){
+                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24)
+            } else {
+                imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24)
+            }
+            Log.d("gatau",it.toString())
+            status = it
+        }
 
         dataBinding.kostListener = this
         dataBinding.bookmarkListener = this
@@ -88,24 +88,22 @@ class KostListDetailFragment : Fragment(), KostSeeDetailClickListener,AddBookMar
     }
 
     override fun onClickBookmark(view: View) {
-        var status = false
         dataBinding.bookmark = Bookmark(GlobalData.userid, kostid)
         imageButtonBookmark.setOnClickListener {
-            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-            if(status==true){
+            if (status > 0) {
                 imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24)
                 dataBinding.bookmark?.let {
-                    viewModel.deteleBookmark(it)
+                    viewModel.deteleBookmark(kostid, GlobalData.userid)
                 }
+                status -= 1
             } else {
                 imageButtonBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24)
                 dataBinding.bookmark?.let {
                     val list = listOf(it)
                     viewModel.addBookmark(list)
                 }
+                status += 1
             }
-            status = !status
         }
     }
-
 }

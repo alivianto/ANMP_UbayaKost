@@ -71,3 +71,8 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var userid: Int = 0
 }
+
+data class Search(
+    var kataPencarian: String
+)
+

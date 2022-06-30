@@ -11,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ubaya.a160419046_ubayakost.GlobalData
 import com.ubaya.a160419046_ubayakost.model.Bookmark
 import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.model.KostDatabase
@@ -23,7 +24,7 @@ import kotlin.coroutines.CoroutineContext
 
 class KostDetailViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
     val kostLiveData = MutableLiveData<Kost>()
-
+    var checkBookmark = MutableLiveData<Int>()
     private val job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -51,10 +52,19 @@ class KostDetailViewModel(application: Application) : AndroidViewModel(applicati
             db.bookmarkDao().insertAll(*list.toTypedArray())
         }
     }
-    fun deteleBookmark(bookmark: Bookmark){
+
+    fun deteleBookmark(kostId: Int, userId: Int){
         launch {
             val db = buildDb(getApplication())
-            db.bookmarkDao().deleteBookmark(bookmark)
+            db.bookmarkDao().deleteBookmarkData(kostId, userId)
+        }
+    }
+
+    fun checkBookmark(kostId: Int){
+//        var kost = 0
+        launch {
+            val db = buildDb(getApplication())
+            checkBookmark.value = db.kostDao().checkBookmarkKost(kostId)
         }
     }
 

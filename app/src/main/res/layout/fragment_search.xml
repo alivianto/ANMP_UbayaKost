@@ -7,6 +7,9 @@
         <variable
             name="search"
             type="com.ubaya.a160419046_ubayakost.view.SearchKostListener" />
+        <variable
+            name="searchVar"
+            type="com.ubaya.a160419046_ubayakost.model.Search" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
+                android:text="@={searchVar.kataPencarian}"
                 android:hint="Search..." />
         </com.google.android.material.textfield.TextInputLayout>
 
