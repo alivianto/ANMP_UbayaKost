@@ -58,6 +58,13 @@ class KostDetailViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun update(kost: Kost)
+    {
+        launch {
+            val db = buildDb(getApplication())
+            db.kostDao().update(kost)
+        }
+    }
     fun fetch(uuid: Int){
         launch {
 //            val db = Room.databaseBuilder(

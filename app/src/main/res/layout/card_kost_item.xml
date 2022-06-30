@@ -10,6 +10,9 @@
         <variable
             name="kostListener"
             type="com.ubaya.a160419046_ubayakost.view.KostListSeeDetailClickListener" />
+        <variable
+            name="kostEditListener"
+            type="com.ubaya.a160419046_ubayakost.view.KostListEditClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,6 +114,19 @@
                             app:layout_constraintTop_toTopOf="@+id/imageViewKost" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Edit"
+                    android:onClick="@{kostEditListener::onClickKostListEditClick}"
+                    android:tag="@{kost.kostid}"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonReadMore"
+                    app:layout_constraintTop_toTopOf="@+id/buttonReadMore" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

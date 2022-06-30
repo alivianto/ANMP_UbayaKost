@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_itemHome_to_formAddKostFragment"
             app:destination="@id/formAddKostFragment" />
+        <action
+            android:id="@+id/action_itemHome_to_formEditKostFragment"
+            app:destination="@id/formEditKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/kostList"
@@ -109,6 +112,9 @@
         <action
             android:id="@+id/action_kostList_to_kostListDetailFragment"
             app:destination="@id/kostListDetailFragment" />
+        <action
+            android:id="@+id/action_kostList_to_formEditKostFragment"
+            app:destination="@id/formEditKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemBookmark"
@@ -118,6 +124,9 @@
         <action
             android:id="@+id/action_itemBookmark_to_kostListDetailFragment"
             app:destination="@id/kostListDetailFragment" />
+        <action
+            android:id="@+id/action_itemBookmark_to_formEditKostFragment"
+            app:destination="@id/formEditKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -133,10 +142,21 @@
         <action
             android:id="@+id/action_searchFragment_to_kostListDetailFragment"
             app:destination="@id/kostListDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_formEditKostFragment"
+            app:destination="@id/formEditKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/formAddKostFragment"
         android:name="com.ubaya.a160419046_ubayakost.view.FormAddKostFragment"
         android:label="Form Add Kost"
         tools:layout="@layout/fragment_form_add_kost" />
+    <fragment
+        android:id="@+id/formEditKostFragment"
+        android:name="com.ubaya.a160419046_ubayakost.view.FormEditKostFragment"
+        android:label="FormEditKostFragment" >
+        <argument
+            android:name="kostId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

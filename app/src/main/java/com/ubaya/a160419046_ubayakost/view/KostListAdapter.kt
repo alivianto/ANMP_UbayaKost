@@ -14,7 +14,7 @@ import com.ubaya.a160419046_ubayakost.model.Kost
 import com.ubaya.a160419046_ubayakost.util.loadImage
 import kotlinx.android.synthetic.main.card_kost_item.view.*
 
-class KostListAdapter(var kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostListAdapter.KostViewHolder>(), KostListSeeDetailClickListener {
+class KostListAdapter(var kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostListAdapter.KostViewHolder>(), KostListSeeDetailClickListener,KostListEditClickListener {
     class KostViewHolder(var view: CardKostItemBinding):RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KostViewHolder {
@@ -28,6 +28,7 @@ class KostListAdapter(var kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         val arraykost = kostList[position]
         holder.view.kost = kostList[position]
         holder.view.kostListener = this
+        holder.view.kostEditListener = this
 //        with(holder.view){
 //            kost = kostList[position]
 //
@@ -70,6 +71,23 @@ class KostListAdapter(var kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         }
         else{
             action = KostListFragmentDirections.actionKostListToKostListDetailFragment(view.tag.toString().toInt())
+        }
+        Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onClickKostListEditClick(view: View) {
+        var action:NavDirections
+        if(GlobalData.currentFragment =="dashboard"){
+            action = DashboardFragmentDirections.actionItemHomeToFormEditKostFragment(view.tag.toString().toInt())
+        }
+        else if(GlobalData.currentFragment == "BookmarkFragment"){
+            action = BookmarkFragmentDirections.actionItemBookmarkToFormEditKostFragment(view.tag.toString().toInt())
+        }
+        else if(GlobalData.currentFragment == "SearchFragment"){
+            action = SearchFragmentDirections.actionSearchFragmentToFormEditKostFragment(view.tag.toString().toInt())
+        }
+        else{
+            action = KostListFragmentDirections.actionKostListToFormEditKostFragment(view.tag.toString().toInt())
         }
         Navigation.findNavController(view).navigate(action)
     }
